@@ -5,6 +5,7 @@ const absolutePath = (ruta) =>{
     // const resulRoutes = relative.test(ruta);
     const resulRoutes = path.isAbsolute(ruta);
     if(resulRoutes) {
+        console.log('es relativa')
      return ruta}
     else{
         return path.resolve(ruta);
@@ -36,7 +37,7 @@ const filesPath = (paths)=>{
     try{
          return fs.statSync(paths).isFile();
     }catch(err){
-        new Error('File not found') 
+       return 'Error: File not found'
     }
    
 }
@@ -44,7 +45,7 @@ const directPath = (paths) =>{
     try{
         return fs.statSync(paths).isDirectory();
    }catch(err){
-       new Error('Directory not found') 
+    return 'Error: Directory not found'
    }
 }
 

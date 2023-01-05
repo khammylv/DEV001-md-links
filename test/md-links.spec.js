@@ -8,9 +8,9 @@ describe('mdLinks', () => {
   });
 
   it('retorna el contenido', () => {
-    return expect(mdLinks('./prueba/name.txt')).resolves.toBe('hola mundo a todas desde TXT =)');
+    return expect(mdLinks('./prueba/name.md')).resolves.toBe('hola mundo a todas desde TXT =)');
   });
   it('envia un error', () => {
-    return expect(mdLinks('./pruebaa/name.txt')).rejects.toBe('ENOENT');
+    return expect(mdLinks('./pruebaa/name.md')).rejects.toBe('ENOENT');
   });
 });

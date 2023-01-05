@@ -18,7 +18,7 @@ const isMD = (paths) => {
         }
             
 }
-    console.log('fuera del bloque' + fileList)
+   
    return fileList
 }
 
