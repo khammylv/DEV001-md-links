@@ -29,9 +29,10 @@ const extractLinks = (mdobject)=>{
            });
            match = regex.exec(results)
           }
+          
           resolve(links)
         })
-        .catch((err)=>{reject(err.code)})
+        .catch((err)=>{reject('Sorry an error has occurred')})
       })
     )
   })
@@ -39,16 +40,16 @@ const extractLinks = (mdobject)=>{
  return Promise.all(promisesGetLinks);
 }
 
-const respuestaP = (respuestap) =>{
-  const res = isMD(respuestap)
- return new Promise((resolve, reject) =>{
-  extractLinks(res)
-  .then((links) => resolve(links))
-  .catch((err) => reject(err))
- })
-}
+// const respuestaP = (respuestap) =>{
+//   const res = isMD(respuestap)
+//  return new Promise((resolve, reject) =>{
+//   extractLinks(res)
+//   .then((links) => resolve(links))
+//   .catch((err) => reject(err))
+//  })
+// }
 
 module.exports = {
     extractLinks,
-    respuestaP
+    reader
 }
