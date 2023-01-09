@@ -1,15 +1,7 @@
 const fs = require('fs');
 const path = require('path');
-
-const readFiles = (arrayFilms) =>{
-  let arreglos = arrayFilms.map(filesmd =>{
-    return filesmd;
-  })
- 
-  return arreglos;
-}
+const { isMD } = require('./filesMd')
 const reader=  (paths) =>{ 
-
   return new Promise((resolve, reject) =>{
     fs.readFile(paths, 'utf8', (err, data) =>{
         if (err){
@@ -18,36 +10,45 @@ const reader=  (paths) =>{
         resolve(data);
     })
   })
- 
-//paths, data
 }
-const extractLinks = (mdObject)=>{
-  return new Promise((resolve, reject) =>{
-    let links = [];
-    mdObject.forEach((mdFiles)=>{
-      reader(mdFiles).then((results)=>{
-        const regex = /\[(.+?)\]\((https?:\/\/[^\s)]+)\)/g;
-        let match = regex.exec(results)
-         if(match !== null){
-          console.log(match)
-          links.push({
+const extractLinks = (mdobject)=>{
+  const mdObject = isMD(mdobject);
+  let promisesGetLinks = [];
+  mdObject.forEach((mdFiles)=>{
+    promisesGetLinks.push(
+      new Promise((resolve, reject) =>{
+        let links = [];
+        reader(mdFiles).then((results)=>{
+          const regex = /\[(.+?)\]\((https?:\/\/[^\s)]+)\)/g;
+          let match = regex.exec(results)
+          while (match !== null) {
+                    links.push({
             href: match[2],
             text: match[1],
             file: mdFiles,
-          });
-          match = regex.exec(data);
-        }
-        resolve(links)
+           });
+           match = regex.exec(results)
+          }
+          resolve(links)
+        })
+        .catch((err)=>{reject(err.code)})
       })
-      .catch((err)=>{
-        reject(err)  
-      })
-    })
-   
+    )
   })
+   
+ return Promise.all(promisesGetLinks);
+}
+
+const respuestaP = (respuestap) =>{
+  const res = isMD(respuestap)
+ return new Promise((resolve, reject) =>{
+  extractLinks(res)
+  .then((links) => resolve(links))
+  .catch((err) => reject(err))
+ })
 }
 
 module.exports = {
-    readFiles,
-    extractLinks
+    extractLinks,
+    respuestaP
 }
