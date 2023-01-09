@@ -4,12 +4,16 @@
 
 
 
+const { extractLinks } = require('./module/linksMD')
+//const {   absolutePath } = require('./module/routesPath');
+const { isMD } = require('./module/filesMd')
 
- const {   absolutePath } = require('./module/routesPath');
- console.log(absolutePath('/user/bash/readme.md'))
+extractLinks(isMD('./prueba'))
+ .then(res => console.log(res))
+ .catch(err => console.error(err))
+ //console.log(absolutePath('/user/bash/readme.md'))
 
 
-// const { isMD } = require('./module/filesMd')
 
 // //console.log(isMD('./prueba/prueba.md'));
 // console.log(isMD('./prueba'))
