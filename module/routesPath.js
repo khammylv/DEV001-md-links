@@ -5,34 +5,12 @@ const absolutePath = (ruta) =>{
     // const resulRoutes = relative.test(ruta);
     const resulRoutes = path.isAbsolute(ruta);
     if(resulRoutes) {
-        console.log('es relativa')
      return ruta}
     else{
         return path.resolve(ruta);
     }
 }
 
-// const filesPath = (paths)=>{
-//     return new Promise((resolve, reject) =>{
-//         fs.stat(paths, (error, stats) => {
-//         if(error){
-//             reject(new Error('File not found')) 
-//         }
-//         resolve(stats.isFile())
-//         });
-//     });
-   
-// }
-// const directPath = (paths) =>{
-//     return new Promise((resolve, reject) =>{
-//         fs.stat(paths, (error, stats) => {
-//             if(error){
-//                 reject(new Error('Directory not found'))
-//             }
-//             resolve(stats.isDirectory())
-//             });
-//      });
-// }
 const filesPath = (paths)=>{
     try{
          return fs.statSync(paths).isFile();
