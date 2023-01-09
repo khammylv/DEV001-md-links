@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const { isMD } = require('./filesMd')
+
 const reader=  (paths) =>{ 
   return new Promise((resolve, reject) =>{
     fs.readFile(paths, 'utf8', (err, data) =>{
@@ -11,8 +11,7 @@ const reader=  (paths) =>{
     })
   })
 }
-const extractLinks = (mdobject)=>{
-  const mdObject = isMD(mdobject);
+const extractLinks = (mdObject)=>{
   let promisesGetLinks = [];
   mdObject.forEach((mdFiles)=>{
     promisesGetLinks.push(
@@ -22,7 +21,7 @@ const extractLinks = (mdobject)=>{
           const regex = /\[(.+?)\]\((https?:\/\/[^\s)]+)\)/g;
           let match = regex.exec(results)
           while (match !== null) {
-                    links.push({
+            links.push({
             href: match[2],
             text: match[1],
             file: mdFiles,
@@ -40,14 +39,6 @@ const extractLinks = (mdobject)=>{
  return Promise.all(promisesGetLinks);
 }
 
-// const respuestaP = (respuestap) =>{
-//   const res = isMD(respuestap)
-//  return new Promise((resolve, reject) =>{
-//   extractLinks(res)
-//   .then((links) => resolve(links))
-//   .catch((err) => reject(err))
-//  })
-// }
 
 module.exports = {
     extractLinks,
