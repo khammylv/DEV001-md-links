@@ -6,7 +6,7 @@ const statsLinks = (linksArray) => {
 }
 
 const statsAndValidateLinks = (linksArray) => {
-    const broken = linksArray.filter((links) => links.status_response === 'fail').length;
+    const broken = linksArray.filter((links) => links.message === 'fail').length;
     return {
       'Total': linksArray.length,
       'Unique': new Set(linksArray.map((linkObject) => linkObject.href)).size,

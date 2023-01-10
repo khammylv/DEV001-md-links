@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-
+const { isMD } = require('./filesMd')
 const reader=  (paths) =>{ 
   return new Promise((resolve, reject) =>{
     fs.readFile(paths, 'utf8', (err, data) =>{
@@ -11,7 +11,8 @@ const reader=  (paths) =>{
     })
   })
 }
-const extractLinks = (mdObject)=>{
+const extractLinks = (mdobject)=>{
+  const mdObject = isMD(mdobject);
   let promisesGetLinks = [];
   mdObject.forEach((mdFiles)=>{
     promisesGetLinks.push(
