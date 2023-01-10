@@ -1,5 +1,6 @@
 const path = require('path');
 const fs = require('fs');
+
 const absolutePath = (ruta) =>{
     // const relative = new RegExp('^(?:[a-z]+:)?//', 'i');
     // const resulRoutes = relative.test(ruta);
@@ -9,6 +10,8 @@ const absolutePath = (ruta) =>{
     else{
         return path.resolve(ruta);
     }
+    
+   
 }
 
 const filesPath = (paths)=>{

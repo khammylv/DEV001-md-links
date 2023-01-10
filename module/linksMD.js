@@ -21,13 +21,14 @@ const extractLinks = (mdobject)=>{
         reader(mdFiles).then((results)=>{
           const regex = /\[(.+?)\]\((https?:\/\/[^\s)]+)\)/g;
           let match = regex.exec(results)
-          while (match !== null) {
+          
+          while(match !== null) {
             links.push({
             href: match[2],
             text: match[1],
             file: mdFiles,
            });
-           match = regex.exec(results)
+          match = regex.exec(results)
           }
           
           resolve(links)
