@@ -5,7 +5,7 @@ const reader=  (paths) =>{
   return new Promise((resolve, reject) =>{
     fs.readFile(paths, 'utf8', (err, data) =>{
         if (err){
-            reject(err.code);
+            reject('Cannot read file');
         }
         resolve(data);
     })
@@ -21,13 +21,14 @@ const extractLinks = (mdobject)=>{
         reader(mdFiles).then((results)=>{
           const regex = /\[(.+?)\]\((https?:\/\/[^\s)]+)\)/g;
           let match = regex.exec(results)
-          while (match !== null) {
+          
+          while(match !== null) {
             links.push({
             href: match[2],
             text: match[1],
             file: mdFiles,
            });
-           match = regex.exec(results)
+          match = regex.exec(results)
           }
           
           resolve(links)
@@ -39,8 +40,6 @@ const extractLinks = (mdobject)=>{
    
  return Promise.all(promisesGetLinks);
 }
-
-
 module.exports = {
     extractLinks,
     reader

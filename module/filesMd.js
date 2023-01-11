@@ -5,21 +5,19 @@ const isMD = (paths) => {
     const isAbsolute = absolutePath(paths);
     let fileList = [];
     if (path.extname(isAbsolute) === '.md') {
-       if(filesPath(isAbsolute)){
-           fileList.push(isAbsolute);
-            }
+        if (filesPath(isAbsolute)) {
+            fileList.push(isAbsolute);
+        }
     } else {
-        if(directPath(isAbsolute)){
+        if (directPath(isAbsolute)) {
             const directFiles = fs.readdirSync(isAbsolute, 'utf8');
             directFiles.forEach((file) => {
                 let pathnew = path.join(isAbsolute, file);
                 fileList = [...fileList, ...isMD(pathnew)]
             });
         }
-            
-}
-   
-   return fileList
+    }
+    return fileList
 }
 
 module.exports = {

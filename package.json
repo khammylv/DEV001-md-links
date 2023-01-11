@@ -22,7 +22,8 @@
     "url": "git+https://github.com/khammylv/DEV001-md-links.git"
   },
   "keywords": [
-    "markdown"
+    "markdown",
+    "md-links"
   ],
   "author": "Maria Camila leal",
   "license": "ISC",
@@ -35,5 +36,10 @@
   },
   "dependencies": {
     "axios": "^1.2.2"
+  },
+  "preferGlobal": true,
+  "bin": {
+    "md-links": "./cli.js"
   }
+
 }
