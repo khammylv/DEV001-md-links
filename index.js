@@ -12,7 +12,10 @@ const mdLinks = (route, options) =>{
     
     extractLinks(route).then((res) => {
            const respuesta = res.flat()
-          
+           if(options === undefined) {
+            resolve(respuesta)
+           
+           }  
            if(options.validate && options.stats){
             getStatus(respuesta)
             .then((res) => {
@@ -59,3 +62,4 @@ const mdLinks = (route, options) =>{
 module.exports = {
     mdLinks
 }
+
