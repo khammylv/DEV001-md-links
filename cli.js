@@ -10,6 +10,7 @@ const cli = (filePath, argv) => {
     const stats = argv.includes("--stats");
     if (filePath === undefined) {
         console.log("😱 Please enter a path")
+        return
     }
     if (stats && validate) {
         mdLinks(filePath, { validate: true })
@@ -18,6 +19,8 @@ const cli = (filePath, argv) => {
                 console.log(`Total: ${statVal.Total} \nUnique: ${statVal.Unique} \nBroken: ${statVal.Broken}`)
             })
             .catch((err) => { console.log(err) })
+        return
+
     }
     if (argv.length <= 3) {
         mdLinks(filePath, { validate: false }).then((results) => {
@@ -26,6 +29,7 @@ const cli = (filePath, argv) => {
             });
         })
             .catch((err) => { console.log(err) })
+        return
     }
     if (validate) {
         mdLinks(filePath, { validate: true })
@@ -35,6 +39,7 @@ const cli = (filePath, argv) => {
                 });
             })
             .catch((err) => { console.log(err) })
+        return
 
     }
     if (stats) {
@@ -45,10 +50,12 @@ const cli = (filePath, argv) => {
                 console.log(`Total: ${res.Total}\nUnique: ${res.Unique}`)
             })
             .catch((err) => { console.log(err) })
+        return
     }
-   if(argv !== '--stats' && argv !== '--validate' && argv !== undefined){
-    console.log('😔 Your option is not valid, try using --validate, --stats o --stats --validate')
-   }
+    if (argv !== '--stats' && argv !== '--validate') {
+        console.log('😔 Your option is not valid, try using --validate, --stats o --stats --validate')
+        return
+    }
 }
 
 cli(filePath, argv)
