@@ -16,9 +16,6 @@ describe('mdLinks', () => {
   it('regex vacia', () => {
     return expect(mdLinks(' ')).rejects.toBe('Please enter a path');
   })
-  it('options vacia', () => {
-    return expect(mdLinks('./prueba')).rejects.toBe('Please enter a option');
-  })
   it('Debe retornar objeto con estadística de links validados', () => {
     getStatus.mockResolvedValue(
       [

@@ -9,10 +9,7 @@ const mdLinks = (route, options) =>{
     if(regexVacia.test(route)){
      reject('Please enter a path')
     }  
-    if(options === undefined) {
-      reject('Please enter a option')
-     
-     }  
+    
     extractLinks(route).then((res) => {
            const respuesta = res.flat()
           
