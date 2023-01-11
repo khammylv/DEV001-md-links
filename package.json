@@ -19,7 +19,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/khammylv/DEV001-md-links.git"
+    "url": "git+https://github.com/khammylv/markdown-links.git"
   },
   "keywords": [
     "markdown",
@@ -28,9 +28,9 @@
   "author": "Maria Camila leal",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/khammylv/DEV001-md-links/issues"
+    "url": "https://github.com/khammylv/markdown-links/issues"
   },
-  "homepage": "https://github.com/khammylv/DEV001-md-links#readme",
+  "homepage": "https://github.com/khammylv/markdown-links#readme",
   "devDependencies": {
     "jest": "^29.3.1"
   },
@@ -41,5 +41,4 @@
   "bin": {
     "md-links": "./cli.js"
   }
-
 }

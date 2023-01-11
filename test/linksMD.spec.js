@@ -38,4 +38,3 @@ describe('reader', () => {
       return expect(extractLinks('./pruebaa/name.md')).rejects.toBe('Sorry an error has occurred');
     });
   });
-
