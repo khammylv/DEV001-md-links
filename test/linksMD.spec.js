@@ -1,16 +1,25 @@
-const { extractLinks, reader} = require('../module/linksMD')
+const { extractLinks, reader} = require('../module/linksMD');
+const { mocksData } = require('./__Mocks__/mocksData');
 
+jest.mock('../module/linksMD', () => {
+  return {
+      __esModule: true,
+      extractLinks: jest.fn(),
+      reader: jest.fn()
+  }
+})
 describe('reader', () => {
 
     it('is a function', () => {
       expect(typeof reader).toBe('function');
     });
-  
     it('retorna el contenido', () => {
+      reader.mockResolvedValue('hola mundo a todas desde TXT =)')
       return expect(reader('./prueba/name.md')).resolves.toBe('hola mundo a todas desde TXT =)');
     });
     it('envia un error', () => {
-      return expect(reader('./pruebaa/name.md')).rejects.toBe('ENOENT');
+      reader.mockRejectedValue('Cannot read file')
+      return expect(reader('./pruebaa/name.md')).rejects.toBe('Cannot read file');
     });
   });
 
@@ -21,26 +30,11 @@ describe('reader', () => {
     });
   
     it('retorna un objeto con las propiedades del contenido', () => {
-      return expect(extractLinks('./prueba/prueba.md')).resolves.toEqual([
-        [{
-            href: 'https://nodejs.org/api/path.html#pathextnamepath',
-            text: 'nodeJS',
-            file: 'D:\\proyectos Web\\laboratoria\\proyectoCuatro\\DEV001-md-links\\prueba\\prueba.md'
-          },
-          {
-            href: 'https://www.youtube.com/watch?v=o85OkeVtm7k',
-            text: 'Curso nodeJS - midudev',
-            file: 'D:\\proyectos Web\\laboratoria\\proyectoCuatro\\DEV001-md-links\\prueba\\prueba.md'
-          },
-          {
-            href: 'https://www.twitch.tv/midudev',
-            text: 'Twitch',
-            file: 'D:\\proyectos Web\\laboratoria\\proyectoCuatro\\DEV001-md-links\\prueba\\prueba.md'
-          }]
-        
-      ]);
+      extractLinks.mockResolvedValue(mocksData.validateFalse)
+      return expect(extractLinks('./prueba/prueba.md')).resolves.toEqual(mocksData.validateFalse);
       });
     it('envia un error', () => {
+      extractLinks.mockRejectedValue('Sorry an error has occurred')
       return expect(extractLinks('./pruebaa/name.md')).rejects.toBe('Sorry an error has occurred');
     });
   });

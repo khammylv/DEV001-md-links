@@ -1,9 +1,8 @@
 const path = require('path');
 const fs = require('fs');
 
+
 const absolutePath = (ruta) =>{
-    // const relative = new RegExp('^(?:[a-z]+:)?//', 'i');
-    // const resulRoutes = relative.test(ruta);
     const resulRoutes = path.isAbsolute(ruta);
     if(resulRoutes) {
      return ruta}
@@ -33,5 +32,5 @@ const directPath = (paths) =>{
 module.exports = {
     filesPath,
     directPath,
-    absolutePath,
+    absolutePath
 }

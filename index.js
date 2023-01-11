@@ -8,14 +8,14 @@ const mdLinks = (route, options) =>{
     const regexVacia = /\s/g
     if(regexVacia.test(route)){
      reject('Please enter a path')
-    }    
+    }  
+    if(options === undefined) {
+      reject('Please enter a option')
+     
+     }  
     extractLinks(route).then((res) => {
            const respuesta = res.flat()
-           if(options === undefined) {
-            resolve(respuesta)
-            return
-            //console.log(res.flat());
-           }
+          
            if(options.validate && options.stats){
             getStatus(respuesta)
             .then((res) => {
@@ -51,33 +51,14 @@ const mdLinks = (route, options) =>{
            else {
             resolve(respuesta)
             return
-            //console.log(res.flat());
+           
            }
-             //console.log(respuesta)
-           
-            
-           
+        
         }) 
         .catch((err) => {reject(err)}); 
     })
    
 }
-
-// const options = {
-//   validate : true
-// }
-// const options2 = {
-//     validate : false
-// }
-// const options3 = {
-//     validate : true,
-//     stats : true
-// }
-// const options4 = {
-//     stats : true
-// }
-
-
 module.exports = {
     mdLinks
 }

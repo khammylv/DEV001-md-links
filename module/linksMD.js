@@ -5,7 +5,7 @@ const reader=  (paths) =>{
   return new Promise((resolve, reject) =>{
     fs.readFile(paths, 'utf8', (err, data) =>{
         if (err){
-            reject(err.code);
+            reject('Cannot read file');
         }
         resolve(data);
     })
@@ -40,8 +40,6 @@ const extractLinks = (mdobject)=>{
    
  return Promise.all(promisesGetLinks);
 }
-
-
 module.exports = {
     extractLinks,
     reader

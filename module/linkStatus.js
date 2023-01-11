@@ -1,7 +1,6 @@
 const { extractLinks } = require('./linksMD')
 const axios = require("axios");
 
-
 const getStatus = (objectStatus) => {
     const links = objectStatus.map((link) => {
         return axios
@@ -19,8 +18,6 @@ const getStatus = (objectStatus) => {
     });
     return Promise.all(links)
 }
-
-
 module.exports = {
     getStatus
 }

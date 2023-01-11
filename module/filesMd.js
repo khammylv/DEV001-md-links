@@ -2,7 +2,6 @@ const path = require('path');
 const fs = require('fs');
 const { filesPath, directPath, absolutePath } = require('./routesPath');
 const isMD = (paths) => {
-
     const isAbsolute = absolutePath(paths);
     let fileList = [];
     if (path.extname(isAbsolute) === '.md') {
@@ -17,13 +16,8 @@ const isMD = (paths) => {
                 fileList = [...fileList, ...isMD(pathnew)]
             });
         }
-
     }
     return fileList
-
-
-
-
 }
 
 module.exports = {
