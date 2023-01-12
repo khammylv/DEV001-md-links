@@ -25,7 +25,7 @@ const cli = (filePath, argv) => {
     if (argv.length <= 3) {
         mdLinks(filePath, { validate: false }).then((results) => {
             results.forEach(element => {
-                console.log(`${element.file} ${element.href} ${element.text}`)
+                console.log(`${element.file} ${element.href} ${element.text.slice(0, 50)}`)
             });
         })
             .catch((err) => { console.log(err) })
@@ -35,7 +35,7 @@ const cli = (filePath, argv) => {
         mdLinks(filePath, { validate: true })
             .then((res) => {
                 res.forEach(element => {
-                    console.log(`${element.file} ${element.href} ${element.message} ${element.status} ${element.text}`)
+                    console.log(`${element.file} ${element.href} ${element.message} ${element.status} ${element.text.slice(0, 50)}`)
                 });
             })
             .catch((err) => { console.log(err) })
@@ -43,7 +43,7 @@ const cli = (filePath, argv) => {
 
     }
     if (stats) {
-        mdLinks(filePath, { validate: true })
+        mdLinks(filePath, { validate: false })
             .then((results) => {
 
                 const res = statsLinks(results)
@@ -52,7 +52,7 @@ const cli = (filePath, argv) => {
             .catch((err) => { console.log(err) })
         return
     }
-    if (argv !== '--stats' && argv !== '--validate') {
+    if (argv !== '--stats' && argv !== '--validate' && argv === undefined) {
         console.log('😔 Your option is not valid, try using --validate, --stats o --stats --validate')
         return
     }

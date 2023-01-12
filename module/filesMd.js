@@ -17,6 +17,7 @@ const isMD = (paths) => {
             });
         }
     }
+    
     return fileList
 }
 

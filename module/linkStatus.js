@@ -1,8 +1,9 @@
-const { extractLinks } = require('./linksMD')
 const axios = require("axios");
 
 const getStatus = (objectStatus) => {
+   
     const links = objectStatus.map((link) => {
+        
         return axios
             .get(link.href, {
                 headers: { "Accept-Encoding": "gzip,deflate,compress" },
@@ -12,8 +13,15 @@ const getStatus = (objectStatus) => {
                 return { ...link, status: status, message: "ok" };
             })
             .catch((error) => {
+              
+               if(error.response != undefined) {
+                
                 const errorStatus = error.response.status;
                 return { ...link, status: errorStatus, message: "fail" };
+               }else{
+                return { ...link, status: 404, message: "fail" };
+               }
+              
             })
     });
     return Promise.all(links)
