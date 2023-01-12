@@ -26,10 +26,9 @@ Esta herramienta esta diseñada usando Node.js, y nos permite leer y analizar ar
 ## 2. Diagrama de Flujo
 
 Para este proyecto se desarrollo un diagrama en el cual se puede ver todo el flujo utilizado en la ejecución.
-* [Aquí puedes ver el diagrama](https://www.figma.com/file/X4uCjjdwuYPmorfQgwN4p1/Markdown-links?node-id=0%3A1&t=xRS1QV1HKo4yPBnO-0)
+* [Aquí puedes ver el diagrama](https://drive.google.com/file/d/1MxQXOrlgmT6RV1m18UBprlf8O6try4dE/view?usp=sharing)
 
-<iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FX4uCjjdwuYPmorfQgwN4p1%2FMarkdown-links%3Fnode-id%3D0%253A1%26t%3D8Miuu6b9Wiv3dQMK-1" allowfullscreen></iframe>
-* [Aquí puedes ver el diagrama]([https://www.figma.com/file/X4uCjjdwuYPmorfQgwN4p1/Markdown-links?node-id=0%3A1&t=xRS1QV1HKo4yPBnO-0](https://www.figma.com/file/X4uCjjdwuYPmorfQgwN4p1?embed_host=share&kind=&node-id=0%3A1&t=8Miuu6b9Wiv3dQMK-1&viewer=1))
+
 
 ## 3. Modo de uso (API)
 
