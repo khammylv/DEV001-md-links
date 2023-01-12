@@ -19,7 +19,7 @@ const getStatus = (objectStatus) => {
                 const errorStatus = error.response.status;
                 return { ...link, status: errorStatus, message: "fail" };
                }else{
-                return { ...link, status: 404, message: "fail" };
+                return { ...link, status: 'no found', message: "fail" };
                }
               
             })
