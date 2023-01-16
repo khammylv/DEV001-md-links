@@ -200,7 +200,7 @@ mdLinks("./some/dir")
 
 ## 5. Guía de instalación
 
-Módulo instalable via `npm install <github-khammylv>/markdown-links`. Este módulo
+Módulo instalable via `npm install khammylv/markdown-links`. Este módulo
 incluye tanto **un ejecutable** como **una interfaz** que podamos importar con `require`
 para usarlo programáticamente.
 
